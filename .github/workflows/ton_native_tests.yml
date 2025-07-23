@@ -23,15 +23,12 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 18
+        node-version: 20
         cache: 'npm'
 
     - name: Install dependencies
       working-directory: chains/ton
       run: npm install
-
-    - name: Install Blueprint CLI globally
-      run: npm install -g @ton-community/blueprint
 
     - name: Build train contract
       working-directory: chains/ton/contracts
