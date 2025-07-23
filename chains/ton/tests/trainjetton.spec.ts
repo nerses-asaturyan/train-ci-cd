@@ -2056,4 +2056,19 @@ describe('TrainJetton', () => {
         expect((await deployerJettonWallet.getData()).balance - balanceOfDeployerBefore).toBe(1n);
         console.log('Total Fees for Redeem Msg: ', getTotalFees(redeemTx.transactions) / 10 ** 9, ' TON');
     });
+
+    it('returns funds when msg is empty', async () => {
+        const tx = await trainContract.send(
+            deployer.getSender(),
+            { value: toNano('0.5'), bounce: true },
+            beginCell().endCell().asSlice(),
+        );
+
+        expect(tx.transactions).toHaveTransaction({
+            from: trainContract.address,
+            to: deployer.address,
+            success: true,
+            op: 0x0,
+        });
+    });
 });
