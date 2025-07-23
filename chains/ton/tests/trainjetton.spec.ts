@@ -1,11 +1,10 @@
-import { Blockchain, printTransactionFees, SandboxContract, TreasuryContract } from '@ton/sandbox';
+import { Blockchain, SandboxContract, TreasuryContract } from '@ton/sandbox';
 import { toNano, beginCell, Builder, Cell } from '@ton/core';
 import { JettonMinter, JettonMinterConfig, JettonWallet } from '@ton-community/assets-sdk';
 import {
     AddLock,
     CommitData,
     LockData,
-    Redeem,
     TokenTransfer,
     TrainJetton,
     storeCommitData,
