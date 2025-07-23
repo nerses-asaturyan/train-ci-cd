@@ -1495,4 +1495,8 @@ describe('TRAIN Protocol Native Asset Tests', () => {
             exitCode: Train.errors['Not Future Timelock'],
         });
     });
+
+    it('testing ci cd', () => {
+        expect(1).toBe(1);
+    });
 });
