@@ -297,13 +297,13 @@ contract Train {
                 });
             } else {
                 if (sender() == htlc.srcReceiver) {
-                    message(MessageParameters {
-                        to: htlc.srcReceiver,
-                        bounce: false,
-                        value: htlc.amount + reward.amount,
-                        mode: SendRemainingBalance,
-                        body: "TRAINRedeemAndReward".asComment(),
-                    });
+                    // message(MessageParameters {
+                    //     to: htlc.srcReceiver,
+                    //     bounce: false,
+                    //     value: htlc.amount + reward.amount,
+                    //     mode: SendRemainingBalance,
+                    //     body: "TRAINRedeemAndReward".asComment(),
+                    // });
                 } else {
                     message(MessageParameters { to: htlc.srcReceiver, bounce: false, value: htlc.amount, mode: SendPayFwdFeesSeparately, body: "TRAINRedeem".asComment() });
                     message(MessageParameters {
