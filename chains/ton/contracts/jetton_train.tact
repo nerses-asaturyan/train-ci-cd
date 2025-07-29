@@ -376,24 +376,24 @@ contract TrainJetton with OwnableTransferable {
         emit(TokenRedeemed { id: msg.id, redeemAddress: sender(), secret: msg.secret, hashlock: htlc.hashlock }.toCell());
         if (!self.rewards.exists(msg.id)) {
             nativeReserve(self.storageReserve, ReserveExact | ReserveAddOriginalBalance | ReserveBounceIfActionFail);
-            message(MessageParameters {
-                to: self.jettonMasterToWallet.get(htlc.jettonMasterAddress)!!,
-                value: 0,
-                bounce: false,
-                mode: SendRemainingBalance,
-                body: TokenTransfer {
-                    queryId: 0x758db085,
-                    amount: htlc.amount,
-                    destination: htlc.srcReceiver,
-                    responseDestination: ctx.sender,
-                    customPayload: null,
-                    forwardTonAmount: 1,
-                    forwardPayload: beginCell().storeUint(1, 1).storeRef(beginCell()
-                        .storeUint(0, 32)
-                        .storeSlice("TRAINRedeem".asSlice())
-                        .endCell()).endCell().asSlice(),
-                }.toCell(),
-            });
+            // message(MessageParameters {
+            //     to: self.jettonMasterToWallet.get(htlc.jettonMasterAddress)!!,
+            //     value: 0,
+            //     bounce: false,
+            //     mode: SendRemainingBalance,
+            //     body: TokenTransfer {
+            //         queryId: 0x758db085,
+            //         amount: htlc.amount,
+            //         destination: htlc.srcReceiver,
+            //         responseDestination: ctx.sender,
+            //         customPayload: null,
+            //         forwardTonAmount: 1,
+            //         forwardPayload: beginCell().storeUint(1, 1).storeRef(beginCell()
+            //             .storeUint(0, 32)
+            //             .storeSlice("TRAINRedeem".asSlice())
+            //             .endCell()).endCell().asSlice(),
+            //     }.toCell(),
+            // });
         } else {
             let reward: Reward = Reward { amount: 0, timelock: 0 };
             reward = self.rewards.get(msg.id)!!;
