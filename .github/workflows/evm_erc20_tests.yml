@@ -21,12 +21,6 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - name: Install dependencies
-        working-directory: chains/evm/solidity
-        run: npm install
-      - name: Compile contracts
-        working-directory: chains/evm/solidity
-        run: npx hardhat compile
       - name: Run ERC20 tests
         working-directory: chains/evm/solidity
         run: npx hardhat test test/erc20.js --bail --parallel
