@@ -35,6 +35,16 @@ jobs:
         run: npx blueprint build train
 
       - name: Run blueprint tests
+        id: blueprint_test
         working-directory: chains/ton
-        run: npx blueprint test tests/train.spec.ts
-        continue-on-error: false
+        run: |
+          npx blueprint test tests/train.spec.ts | tee blueprint-test.log
+        continue-on-error: true
+
+      - name: Fail with custom message if tests failed
+        if: steps.blueprint_test.conclusion == 'failure'
+        working-directory: chains/ton
+        run: |
+          echo "❌ Blueprint tests failed! Last 50 lines of output:"
+          tail -n 50 blueprint-test.log || true
+          exit 1
