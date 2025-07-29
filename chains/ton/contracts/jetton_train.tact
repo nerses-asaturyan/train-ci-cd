@@ -417,24 +417,24 @@ contract TrainJetton with OwnableTransferable {
                             .endCell()).endCell().asSlice(),
                     }.toCell(),
                 });
-                // message(MessageParameters {
-                //     to: self.jettonMasterToWallet.get(htlc.jettonMasterAddress)!!,
-                //     value: 0,
-                //     bounce: false,
-                //     mode: SendRemainingBalance,
-                //     body: TokenTransfer {
-                //         queryId: 0x758db90,
-                //         amount: reward.amount,
-                //         destination: htlc.sender,
-                //         responseDestination: ctx.sender,
-                //         customPayload: null,
-                //         forwardTonAmount: 1,
-                //         forwardPayload: beginCell().storeUint(1, 1).storeRef(beginCell()
-                //             .storeUint(0, 32)
-                //             .storeSlice("TRAINRewardReturn".asSlice())
-                //             .endCell()).endCell().asSlice(),
-                //     }.toCell(),
-                // });
+                message(MessageParameters {
+                    to: self.jettonMasterToWallet.get(htlc.jettonMasterAddress)!!,
+                    value: 0,
+                    bounce: false,
+                    mode: SendRemainingBalance,
+                    body: TokenTransfer {
+                        queryId: 0x758db90,
+                        amount: reward.amount,
+                        destination: htlc.sender,
+                        responseDestination: ctx.sender,
+                        customPayload: null,
+                        forwardTonAmount: 1,
+                        forwardPayload: beginCell().storeUint(1, 1).storeRef(beginCell()
+                            .storeUint(0, 32)
+                            .storeSlice("TRAINRewardReturn".asSlice())
+                            .endCell()).endCell().asSlice(),
+                    }.toCell(),
+                });
             } else {
                 if (ctx.sender == htlc.srcReceiver) {
                     message(MessageParameters {
