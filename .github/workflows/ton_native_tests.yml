@@ -37,3 +37,4 @@ jobs:
       - name: Run blueprint tests
         working-directory: chains/ton
         run: npx blueprint test tests/train.spec.ts
+        continue-on-error: false
