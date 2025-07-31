@@ -183,7 +183,7 @@ describe('Train native tests', () => {
       const timelock2 = now + 3000;
       const Id1 = keccak256(toUtf8Bytes('user1-case'));
       const Id2 = keccak256(toUtf8Bytes('user2-case'));
-      const value = parseEther('1');
+      const value = parseEther('0');
 
       await expect(
         train

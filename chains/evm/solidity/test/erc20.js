@@ -109,7 +109,7 @@ describe('Train ERC20 contract', () => {
             Id,
             srcReceiver,
             timelock,
-            0,
+            1,
             tokenAddress
           )
       ).to.be.revertedWithCustomError(trainErc20, 'FundsNotSent');
