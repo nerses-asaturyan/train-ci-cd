@@ -1,4 +1,4 @@
-name: ERC20 Contract Tests
+name: EVM Native Contract Tests
 
 on:
   push:
@@ -30,6 +30,6 @@ jobs:
         working-directory: chains/evm/solidity
         run: npm ci
 
-      - name: Run ERC20 tests
+      - name: Run native tests
         working-directory: chains/evm/solidity
         run: npx hardhat test test/native.js --bail --parallel

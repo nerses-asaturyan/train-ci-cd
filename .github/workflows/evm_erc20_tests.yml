@@ -1,4 +1,4 @@
-name: ERC20 Contract Tests
+name: EVM ERC20 Contract Tests
 
 on:
   push:
