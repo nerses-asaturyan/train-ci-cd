@@ -22,7 +22,7 @@ describe('Train native tests', () => {
     // Take a snapshot after every fresh deploy
     snapshotId = await ethers.provider.send('evm_snapshot');
   });
-  //
+
   // ======================
   //         COMMIT
   // ======================
@@ -183,7 +183,7 @@ describe('Train native tests', () => {
       const timelock2 = now + 3000;
       const Id1 = keccak256(toUtf8Bytes('user1-case'));
       const Id2 = keccak256(toUtf8Bytes('user2-case'));
-      const value = parseEther('0');
+      const value = parseEther('1');
 
       await expect(
         train
