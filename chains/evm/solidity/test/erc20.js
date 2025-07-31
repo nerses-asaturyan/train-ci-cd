@@ -29,7 +29,7 @@ describe('Train ERC20 contract', () => {
     await token.connect(user2).mint(user2.address, parseEther('100'));
     await token.connect(user2).approve(await trainErc20.getAddress(), parseEther('100'));
   });
-  //
+
   // ===========================
   //         COMMIT
   // ===========================

@@ -22,7 +22,7 @@ describe('Train native tests', () => {
     // Take a snapshot after every fresh deploy
     snapshotId = await ethers.provider.send('evm_snapshot');
   });
-
+  //
   // ======================
   //         COMMIT
   // ======================
@@ -231,21 +231,9 @@ describe('Train native tests', () => {
 
       const tx = await train
         .connect(user1)
-        .commit(
-          [],
-          [],
-          [],
-          dstChain,
-          dstAsset,
-          dstAddress,
-          srcAsset,
-          Id,
-          srcReceiver,
-          timelock,
-          {
-            value,
-          }
-        );
+        .commit([], [], [], dstChain, dstAsset, dstAddress, srcAsset, Id, srcReceiver, timelock, {
+          value,
+        });
 
       const receipt = await tx.wait();
       console.log(`Actual gas used commit (hop depth is 0): ${receipt.gasUsed.toString()}`);
